@@ -7,7 +7,6 @@ option go_package = "./game_cs_pb";
 
 // Enumerations
 enum AwaitedMessage {
-		NONE = 0;
 		DICES_ARE_DRAWN = 1;
 		PIECE_MOVING_IS_DRAWN = 2;
 		TIME_FOR_RESOLVE_OUT = 3;
