@@ -12,7 +12,8 @@ enum AwaitedMessage {
 		TIME_FOR_RESOLVE_OUT = 2;
 		BUY_RESOLVE = 3;
 		DO_SABOTAGE_RESOLVE = 4;
-		BUY_ARROW_RESOLVe = 5;
+		BUY_ARROW_RESOLVE = 5;
+		TIME_FOR_WAIT_OUT = 6;
 }
 
 enum TileType {
@@ -47,6 +48,12 @@ enum PlayerNumber {
 		PLAYER6 = 6;
 }
 
+enum State {
+		WAITING = 0;
+		RELAX = 1;
+		PLAYER_TURN = 2;
+		END = 1;
+}
 
 // Main messages
 message ClientHello {
@@ -90,16 +97,19 @@ message BuyArrowResolve {
 message DicesAreDrawn {}
 message PieceMovingIsDrawn {}
 message TimeForResolveOut {}
+message TimeForWaitOut {}
 
 
 // Additional messages
 message GameState {
-		uint32 currentTurn = 1;
-		uint32 currentStage = 2;
-		PlayerNumber whoseTurn = 3;
-		Dices dices = 4;
-		repeated Tile map = 5;
-		repeated Player players = 6;	
+		State state = 1;
+		uint32 currentTurn = 2;
+		uint32 currentStage = 3;
+		optional PlayerNumber whoseTurn = 4;
+		repeated uint32 trace = 5;
+		Dices dices = 6;
+		repeated Tile map = 7;
+		repeated Player players = 8;
 }
 
 message AwaitedResolve {
