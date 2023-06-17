@@ -53,7 +53,7 @@ enum State {
 		WAITING = 0;
 		RELAX = 1;
 		PLAYER_TURN = 2;
-		END = 1;
+		END = 3;
 }
 
 // Main messages
